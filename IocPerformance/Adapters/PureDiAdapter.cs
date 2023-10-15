@@ -20,6 +20,8 @@ using static Pure.DI.Lifetime;
 // ReSharper disable ClassNeverInstantiated.Global
 namespace IocPerformance.Adapters
 {
+    using System.Collections;
+
     public sealed partial class PureDiAdapter : ContainerAdapterBase
     {
         private static void Setup()
@@ -43,6 +45,7 @@ namespace IocPerformance.Adapters
                 .Bind<IDummyEight>().To<DummyEight>()
                 .Bind<IDummyNine>().To<DummyNine>()
                 .Bind<IDummyTen>().To<DummyTen>()
+                .Bind<IList>().To<ArrayList>().Root<IList>()
 
                 // RegisterStandard
                 .Bind<ISingleton1>().As(Singleton).To<Singleton1>().Root<ISingleton1>()

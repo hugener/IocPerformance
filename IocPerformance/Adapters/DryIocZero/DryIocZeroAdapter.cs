@@ -3,6 +3,11 @@ using DryIocZero;
 
 namespace IocPerformance.Adapters
 {
+    using IocPerformance.Classes.Complex;
+    using IocPerformance.Classes.Dummy;
+    using IocPerformance.Classes.Multiple;
+    using IocPerformance.Classes.Standard;
+
     public sealed class DryIocZeroAdapter : ContainerAdapterBase
     {
         private Container container;
@@ -19,15 +24,19 @@ namespace IocPerformance.Adapters
 
         public override bool SupportsPropertyInjection => true;
 
-        public override object Resolve(Type type) => container.Resolve(type, false);
 
         public override void Dispose() => container?.Dispose();
 
         public override void Prepare() => PrepareBasic();
+        public override object Resolve(Type type)
+        {
+            return this.container.Resolve(type);
+        }
 
         public override void PrepareBasic()
         {
             container = new Container();
         }
+
     }
 }

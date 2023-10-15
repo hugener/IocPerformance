@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net472</TargetFramework>
+    <TargetFramework>net481</TargetFramework>
     <LangVersion>9.0</LangVersion>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -11,6 +11,7 @@
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
     <CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)Generated</CompilerGeneratedFilesOutputPath>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -83,7 +84,11 @@
     <PackageReference Include="Ninject.Extensions.ChildKernel" Version="3.3.0" />
     <PackageReference Include="Ninject.Extensions.Interception" Version="3.3.5" />
     <PackageReference Include="Ninject.Extensions.Interception.Linfu" Version="3.3.5" />
-    <PackageReference Include="Pure.DI" Version="2.0.0">
+    <PackageReference Include="PolySharp" Version="1.13.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Pure.DI" Version="2.0.15">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -101,6 +106,11 @@
     <PackageReference Include="Stiletto" Version="0.3.1" />
     <PackageReference Include="StructureMap" Version="4.7.1" />
     <PackageReference Include="StructureMap.Microsoft.DependencyInjection" Version="2.0.0" />
+    <PackageReference Include="Sundew.Injection" Version="0.1.0-u20230927-145726-local">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Sundew.Injection.Interface" Version="0.1.0-u20230927-145726-local" />
     <PackageReference Include="System.Composition" Version="7.0.0" />
     <PackageReference Include="System.IO.Compression" Version="4.3.0" />
     <PackageReference Include="System.IO.Compression.ZipFile" Version="4.3.0" />
@@ -116,13 +126,42 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Remove="Adapters\CaliburnMicroContainerAdapter.cs" />
+    <Compile Remove="Adapters\CatelContainerAdapter.cs" />
+    <Compile Remove="Adapters\DynamoContainerAdapter.cs" />
+    <Compile Remove="Adapters\FasterContainerAdapter.cs" />
+    <Compile Remove="Adapters\GraceContainerAdapter.cs" />
     <Compile Remove="Adapters\HiroContainerAdapter.cs" />
+    <Compile Remove="Adapters\LamarContainerAdapter.cs" />
+    <Compile Remove="Adapters\LightInjectContainerAdapter.cs" />
+    <Compile Remove="Adapters\MaestroContainerAdapter.cs" />
+    <Compile Remove="Adapters\Mef2ContainerAdapter.cs" />
+    <Compile Remove="Adapters\MefContainerAdapter.cs" />
+    <Compile Remove="Adapters\MicroResolverContainerAdapter.cs" />
+    <Compile Remove="Adapters\MugenMvvmToolkitContainerAdapter.cs" />
+    <Compile Remove="Adapters\MvvmCrossContainerAdapter.cs" />
+    <Compile Remove="Adapters\NinjectContainerAdapter.cs" />
     <Compile Remove="Adapters\PetiteContainerAdapter.cs" />
     <Compile Remove="Adapters\QuickInjectContainerAdapter.cs" />
+    <Compile Remove="Adapters\RezolverContainerAdapter.cs" />
+    <Compile Remove="Adapters\SimpleInjectorContainerAdapter.cs" />
+    <Compile Remove="Adapters\SingularityContainerAdapter.cs" />
+    <Compile Remove="Adapters\SmartDiContainerAdapter.cs" />
     <Compile Remove="Adapters\SpeediocContainerAdapter.cs" />
+    <Compile Remove="Adapters\SpringContainerAdapter.cs" />
+    <Compile Remove="Adapters\StashboxContainerAdapter.cs" />
     <Compile Remove="Adapters\StilettoContainerAdapter.cs" />
+    <Compile Remove="Adapters\StructureMapContainerAdapter.cs" />
     <Compile Remove="Adapters\StyleMVVMContainerAdapter.cs" />
     <Compile Remove="Adapters\TinyIOCContainerAdapter.cs" />
+    <Compile Remove="Adapters\VSMefContainerAdapter.cs" />
+    <Compile Remove="Adapters\WindsorContainerAdapter.cs" />
+    <Compile Remove="Adapters\ZenjectContainerAdapter.cs" />
+    <Compile Remove="Benchmarks\Advanced\05_Property_Benchmark.cs" />
+    <Compile Remove="Benchmarks\Advanced\08_Conditional_Benchmark.cs" />
+    <Compile Remove="Benchmarks\Advanced\09_ChildContainer_Benchmark.cs" />
+    <Compile Remove="Benchmarks\Advanced\10_AspNetCore_Benchmark.cs" />
+    <Compile Remove="Benchmarks\Advanced\11_InterceptionWithProxy_Benchmark.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
